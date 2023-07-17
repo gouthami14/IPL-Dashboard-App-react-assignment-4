@@ -6,7 +6,10 @@ import TeamCard from '../TeamCard'
 import './index.css'
 
 class Home extends Component {
-  state = {teamsData: [], isLoading: true}
+  state = {
+    teamsData: [],
+    isLoading: true,
+  }
 
   componentDidMount() {
     this.getTeamsList()
@@ -35,11 +38,11 @@ class Home extends Component {
     )
   }
 
-  renderLoader = () => {
-    ;<div data-testid="loader" className="loader-container">
+  renderLoader = () => (
+    <div data-testid="loader" className="loader-container">
       <Loader type="Rings" height={80} width={80} color="#00BFFF" />
     </div>
-  }
+  )
 
   render() {
     const {isLoading} = this.state
