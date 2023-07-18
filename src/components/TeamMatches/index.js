@@ -61,10 +61,39 @@ class TeamMatches extends Component {
       <div className="team-matches-container">
         <img src={teamBannerUrl} alt="team banner" className="team-banner" />
         <LatestMatch latestMatch={latestMatchDetails} />
-        {this.renderTeamMatchesList()}
+        {this.renderRecentMatchesList()}
+      </div>
+    )
+  }
+
+  renderRecentMatchesList = () => {
+    const {matchesData} = this.state
+    const {recentMatches} = matchesData
+    return (
+      <ul className="recent-matches-list">
+        {recentMatches.map(eachMatch => (
+          <MatchCard matchData={eachMatch} key={eachMatch.id} />
+        ))}
+      </ul>
+    )
+  }
+
+  renderLoader = () => {
+    ;<div testid="loader" className="loader-container">
+      <Loader type="BallTriangle" color="#00BFFF" height={80} width={80} />
+    </div>
+  }
+
+  render() {
+    const {isLoading} = this.state
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+    return (
+      <div className={`app-team-matches-container ${id}`}>
+        {isLoading ? this.renderLoader() : this.renderTeamMatches()}
       </div>
     )
   }
 }
-
 export default TeamMatches
