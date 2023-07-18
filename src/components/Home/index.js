@@ -1,9 +1,9 @@
 // Write your code here
+import './index.css'
 import Loader from 'react-loader-spinner'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import {Component} from 'react'
 import TeamCard from '../TeamCard'
-import './index.css'
 
 class Home extends Component {
   state = {
@@ -20,7 +20,7 @@ class Home extends Component {
     const fetchData = await response.json()
     const updatedData = fetchData.teams.map(eachData => ({
       name: eachData.name,
-      teamImageURL: eachData.team_image_url,
+      imageURL: eachData.team_image_url,
       id: eachData.id,
     }))
     this.setState({teamsData: updatedData, isLoading: false})
@@ -31,8 +31,8 @@ class Home extends Component {
 
     return (
       <ul className="team-list-items">
-        {teamsData.map(eachteam => (
-          <TeamCard key={eachteam.id} teamsData={eachteam} />
+        {teamsData.map(team => (
+          <TeamCard key={team.id} teamsData={team} />
         ))}
       </ul>
     )
