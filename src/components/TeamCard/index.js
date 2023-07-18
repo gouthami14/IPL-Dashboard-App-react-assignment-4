@@ -6,7 +6,7 @@ import {Component} from 'react'
 class TeamCard extends Component {
   render() {
     const {teamsData} = this.props
-    const {name, imageUrl, id} = teamData
+    const {name, imageUrl, id} = teamsData
     return (
       <Link to={`/team-matches/${id}`} className="link-item">
         <li className="team-card">
